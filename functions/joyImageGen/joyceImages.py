@@ -1,12 +1,12 @@
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 def make_image(text):
-    img = Image.open('./assets/colors/beige.png')
+    img = Image.open('assets/images/beige.png')
     image_width, image_height = img.size
     print(image_width, image_height)
     quote = textwrap.wrap(text, width=25)
-    largeFont = ImageFont.truetype('Garamond.ttf', 77)
-    smallFont = ImageFont.truetype('Garamond.ttf', 65)
+    largeFont = ImageFont.truetype('assets/fonts/Garamond.ttf', 77)
+    smallFont = ImageFont.truetype('assets/fonts/Garamond.ttf', 65)
 
     rawImageEditable = ImageDraw.Draw(img)
     image_width, image_height = img.size
