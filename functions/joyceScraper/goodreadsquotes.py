@@ -28,10 +28,14 @@ def grabber(base_url, i=1):
         quote_text = div.get_text()
         allQuotes.append(quote_text)
 
-    quotes = allQuotes
-    print(quotes)
-    with open('../../joyce.txt', 'a') as file:
-        file.writelines(quotes)
+    editedQuotes = [];
+    for quote in allQuotes:
+        editedQuotes.append("\n" + quote.strip().strip("“").rstrip("―").strip().strip("”"))
+
+    with open('joyce.txt', 'a') as file:
+            print(editedQuotes)
+            file.writelines(editedQuotes)
+            file.close()
 
     if i <= 36:
         grabber(base_url, i + 1)
