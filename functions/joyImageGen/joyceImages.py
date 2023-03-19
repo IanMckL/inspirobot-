@@ -2,6 +2,8 @@ from PIL import Image, ImageDraw, ImageFont
 import textwrap
 def make_image(text):
     img = Image.open('assets/images/beige.png')
+    accessory = Image.open('assets/images/lineArt/person_lines.png')
+    img.paste(accessory,(0,0), accessory.convert("RGBA"))
     image_width, image_height = img.size
     print(image_width, image_height)
     quote = textwrap.wrap(text, width=25)
@@ -21,5 +23,6 @@ def make_image(text):
 
     rawImageEditable.text((image_width - image_width//2.5, text_bottom + 140), '-C. Joybell C.', font=smallFont, fill="black")
     img.show()
+    img.save('generations/image.jpg')
 
 
