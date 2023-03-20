@@ -1,5 +1,4 @@
 import os
-
 from blather import Blather
 from functions.joyImageGen import joyceImages
 from functions.joyceScraper import goodreadsquotes
@@ -17,4 +16,3 @@ while len(res) < 45 or len(res) > 250:
 quoteText = '"' + res.strip() + '"'
 joyceImages.make_image(f'{quoteText}')
 client.make_post('generations/image.jpg', quoteText)
-
