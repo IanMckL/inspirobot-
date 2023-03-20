@@ -1,8 +1,11 @@
+import os
+import random
+
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 def make_image(text):
-    img = Image.open('assets/images/beige.png')
-    accessory = Image.open('assets/images/lineArt/person_lines.png')
+    img = Image.open('assets/images/backgrounds/' + random.choice(os.listdir('assets/images/backgrounds')))
+    accessory = Image.open('assets/images/lineArt/' +random.choice(os.listdir('assets/images/lineArt')))
     img.paste(accessory,(0,0), accessory.convert("RGBA"))
     image_width, image_height = img.size
     print(image_width, image_height)
@@ -21,7 +24,7 @@ def make_image(text):
         rawImageEditable.text(((image_width - width) / 2, text_top), line, font=largeFont, fill="black")
         text_top = text_top + 77
 
-    rawImageEditable.text((image_width - image_width//2.5, text_bottom + 140), '-C. Joybell C.', font=smallFont, fill="black")
+    rawImageEditable.text((image_width - image_width//2.5, text_bottom + 140), '-C. Joybot C.', font=smallFont, fill="black")
     img.show()
     img.save('generations/image.jpg')
 
