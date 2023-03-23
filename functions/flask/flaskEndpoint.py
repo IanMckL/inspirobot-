@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from pyngrok import ngrok
-
 def init_flask():
     app = Flask(__name__)
     ngrokPublicUrl = ngrok.connect(5003)
