@@ -1,6 +1,4 @@
 import os
-from random import random
-from zalgo_text import zalgo
 from instagrapi import Client
 from dotenv import dotenv_values, load_dotenv
 
@@ -8,11 +6,15 @@ load_dotenv()
 username = os.getenv('INSTAGRAM_USERNAME')
 password = os.getenv('INSTAGRAM_PASSWORD')
 cl = Client()
-cl.login(f'{username}', f'{password}')
 
 
-def make_post(photoPath, text):
-    cl.photo_upload(photoPath, f'{text}')
+def make_post(photo_path, text):
+    try:
+        cl.login(f'{username}', f'{password}')
+        cl.photo_upload(photo_path, f'{text}')
+    except(RuntimeError, Exception):
+        print('Instagram login error')
+        pass
 
 
 def make_message(userid="", message="wuwu", name=""):
