@@ -1,9 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
+from threading import Thread
 from pyngrok import ngrok
+
 def init_flask():
     app = Flask(__name__)
-    ngrokPublicUrl = ngrok.connect(5003)
-    print(ngrokPublicUrl)
+    ngrok_public_url = ngrok.connect(5003)
+    print(ngrok_public_url)
+    data = "Henlo"
+
+    @app.route("/")
+    def main():
+        return data
 
     @app.route('/', methods=['POST'])
     def verify():
@@ -23,4 +30,13 @@ def init_flask():
         challenge = request.args.get('hub.challenge')
         return challenge, 200
 
-    app.run(port=5003)
+    def flaskthread():
+        print("in flaskthread")
+        app.run(port=5003)
+
+    # create and start thread to run Flask app
+    t = Thread(target=flaskthread)
+    t.start()
+
+    # return Flask app object
+    return app
