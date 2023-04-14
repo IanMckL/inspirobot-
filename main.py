@@ -6,7 +6,7 @@ from functions.joyceScraper import goodreadsquotes
 from functions.instagram import client
 from functions.flask import flaskEndpoint
 
-client.respond_to_comment(234234, 1123123, "123213", "Write me a poem about shit")
+
 server_app = flaskEndpoint.init_flask()
 directory = os.getcwd()
 # goodreadsquotes.grabber("https://www.goodreads.com/author/quotes/4114218.C_JoyBell_C_")
@@ -21,5 +21,5 @@ while len(res) < 45 or len(res) > 250:
 quoteText = '"' + res.strip() + '"'
 joyceImages.make_image(f'{quoteText}')
 
-# client.make_post('generations/image.jpg', quoteText)
+client.make_post('generations/image.jpg', quoteText)
 # if using ngrok in a virtual environment, use os.chmod(executable, 755) on line 29 of flask_ngrok.py
