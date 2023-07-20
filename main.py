@@ -1,12 +1,11 @@
 import datetime
 import os
-from threading import Thread
-from blather import Blather
+
+from functions.instagram import client
 from functions.joyImageGen import joyceImages
 from functions.joyceScraper import goodreadsquotes
-from functions.instagram import client
-from functions.flask import flaskEndpoint
 from functions.parroty.parroty import Parroty
+
 # server_app = flaskEndpoint.init_flask()
 directory = os.getcwd()
 # goodreadsquotes.grabber("https://www.goodreads.com/author/quotes/4114218.C_JoyBell_C_")

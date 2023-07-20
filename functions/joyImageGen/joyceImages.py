@@ -1,8 +1,8 @@
 import os
 import random
+import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
-import textwrap
 
 
 def make_image(text):

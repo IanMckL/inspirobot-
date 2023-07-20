@@ -1,6 +1,7 @@
+import sys
+
 import urllib3
 from bs4 import BeautifulSoup
-import sys, random, re, time
 
 
 def testIfNextPage(soup):

@@ -1,6 +1,8 @@
-from flask import Flask, request
 from threading import Thread
+
+from flask import Flask, request
 from pyngrok import ngrok
+
 
 def init_flask():
     app = Flask(__name__)
