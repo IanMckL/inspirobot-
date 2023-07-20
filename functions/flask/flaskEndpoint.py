@@ -1,6 +1,6 @@
 from threading import Thread
 
-from flask import Flask, request
+from flask import Flask, request, Markup
 from pyngrok import ngrok
 
 
@@ -13,6 +13,9 @@ def init_flask():
     @app.route("/")
     def main():
         return data
+
+
+
 
     @app.route('/', methods=['POST'])
     def verify():
@@ -36,9 +39,10 @@ def init_flask():
         print("in flaskthread")
         app.run(port=5003)
 
-    # create and start thread to run Flask app
+        # create and start thread to run Flask app
     t = Thread(target=flaskthread)
     t.start()
-
-    # return Flask app object
+        # return Flask app object
     return app
+
+
