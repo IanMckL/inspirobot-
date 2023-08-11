@@ -1,9 +1,8 @@
 import datetime
 import os
 import sys
-from flask import request, Markup
 
-from functions.flask.flaskSingleton import FlaskApp
+from functions.flask_server.flaskEndpoint import init_flask
 from functions.instagram import client
 from functions.joyImageGen import joyceImages
 from functions.joyceScraper import goodreadsquotes
@@ -19,9 +18,11 @@ if len(sys.argv) > 1:
         parroty.create_model(directory + '/joybell_comments.txt')
         parroty.save_model(directory + '/models/joybell_comments.pt')
     elif argument == 'make-post':
+        print('Making post...')
         parroty.load_model(directory + '/models/joyc7.pt')
         res = parroty.generate_text_from_model(' ')
         quoteText = '"' + res.strip() + '"'
+        print(quoteText)
         joyceImages.make_image(f'{quoteText}')
         client.make_post('generations/image.jpg', quoteText)
     elif argument == 'joy-routine':
@@ -30,13 +31,14 @@ if len(sys.argv) > 1:
     elif argument == 'random-comment':
         client.create_random_comment()
         print('test')
-    elif argument == 'flask':
-        print('flask')
-        flaskapp = FlaskApp()
+    elif argument == 'flask_server':
+        print('flask_server')
+        flaskapp = init_flask()
         app = flaskapp.app
         @app.route('/flaskargs', methods=['GET'])
         def flaskargs():
             return 'Joybot is here and she is queer!'
+
 
 
 

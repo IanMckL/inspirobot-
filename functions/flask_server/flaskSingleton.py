@@ -1,4 +1,4 @@
-from functions.flask.flaskEndpoint import init_flask
+from flaskEndpoint import init_flask
 
 
 class FlaskApp:
